@@ -1,0 +1,247 @@
+your-government {
+  position: relative;
+  display: block;
+
+  .no-padding {
+    padding: 0;
+  }
+
+  .margin-right {
+    margin-right: 10px;
+
+    @media (max-width: 767px) {
+      margin-bottom: 10px;
+    }
+  }
+
+  .index-summery {
+    max-width: 500px;
+    margin: 0 0 23px 0;
+  }
+
+  .parliaments {
+    text-align: center;
+    filter: unquote("grayscale(1)");
+    -webkit-filter: unquote("grayscale(1)");
+
+    .office-name {
+      display: table;
+      width: 100%;
+      text-align: center;
+
+      strong {
+        display: table-cell;
+        height: 45px;
+        vertical-align: bottom;
+        font-size: 13px;
+
+        @media (min-width: 350px) {
+          font-size: 16px;
+        }
+      }
+    }
+
+    img {
+      display: inline;
+      max-width: 104px;
+      max-height: 104px;
+      border: {
+        width: 2px;
+        style: solid;
+        color: #f87016;
+        radius: 50%;
+      }
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    &.active,
+    &:hover {
+      filter: unquote("grayscale(0)");
+      -webkit-filter: unquote("grayscale(0)");
+    }
+  }
+
+  candidate {
+    height: 190px;
+    text-align: center;
+
+    &> p {
+      font-size: 12px !important;
+      white-space: pre;
+      overflow: hidden;
+    }
+
+    img {
+      cursor: pointer;
+    }
+
+    .remove {
+      color: red;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .share {
+    position: absolute;
+    bottom: 20px;
+    left: 2%;
+    width: 94%;
+    height: 210px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #000;
+    padding: 4px 10px;
+
+    @media (min-width: 768px) {
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      height: 210px;
+      margin-left: -25%;
+      margin-top: -105px;
+    }
+
+    .social {
+      text-align: center;
+      margin: 15px 0;
+    }
+  }
+
+  .popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #000;
+    padding: 4px 10px;
+
+    @media (min-width: 768px) {
+      width: 350px;
+    }
+
+    @media (min-width: 992px) {
+      width: 400px;
+    }
+
+    @media (min-width: 1200px) {
+      width: 530px;
+    }
+
+
+    $arrowSize: 10px;
+
+    &:after, &:before {
+      top: 70px;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    &.e:after {
+      right: 100%;
+      border-color: rgba(221, 221, 221, 0);
+      border-right-color: #fff;
+      border-width: $arrowSize;
+      margin-top: -$arrowSize;
+    }
+
+    &.e:before {
+      right: 100%;
+      border-color: rgba(204, 204, 204, 0);
+      border-right-color: #000;
+      border-width: $arrowSize + 2;
+      margin-top: -$arrowSize - 2;
+    }
+
+    &.w:after {
+      left: 100%;
+      border-color: rgba(221, 221, 221, 0);
+      border-left-color: #fff;
+      border-width: $arrowSize;
+      margin-top: -$arrowSize;
+    }
+
+    &.w:before {
+      left: 100%;
+      border-color: rgba(204, 204, 204, 0);
+      border-left-color: #000;
+      border-width: $arrowSize + 2;
+      margin-top: -$arrowSize - 2;
+    }
+
+    candidate {
+      height: 100px;
+      max-width: 150px;
+
+      @media (min-width: 350px) {
+        height: 160px;
+      }
+    }
+
+    h4 {
+      margin-top: 0;
+      font-size: 25px;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    .autocomplete-form {
+      position: relative;
+    }
+
+    ul {
+      position: absolute;
+      z-index: 1;
+      background: #fff;
+      padding: 4px;
+      top: 17px;
+      left: 0;
+      border: 1px solid #ccc;
+      list-style: none;
+
+      li {
+        cursor: pointer;
+      }
+    }
+
+    input {
+      height: 18px;
+      font-size: 13px;
+    }
+
+    button {
+      height: 18px;
+      line-height: 1;
+      font-size: 12px;
+      padding: 0 15px;
+    }
+
+    img {
+      border: {
+        width: 2px;
+        style: solid;
+        color: #f87016;
+        radius: 50%;
+      }
+      filter: unquote("grayscale(1)");
+      -webkit-filter: unquote("grayscale(1)");
+
+      &:hover {
+        filter: unquote("grayscale(0)");
+        -webkit-filter: unquote("grayscale(0)");
+      }
+    }
+  }
+}

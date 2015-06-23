@@ -1,0 +1,53 @@
+h1.section-header
+  a.section-link {{title}}
+p.index-summery.pull-left {{description}}
+.pull-right
+  button.btn.btn-orange.btn-sm.margin-right(ng-click="toplist()" ng-hide="stage == 'toplist'") Se hvem flest har valgt til minister
+  button.btn.btn-orange.btn-sm(ng-click="start()" ng-hide="stage == 'home'") Sæt din egen regering
+.clearfix
+candidate.parliaments.col-lg-2.col-sm-3.col-xs-6(ng-repeat="parliament in parliaments" ng-class="class")
+  .office-name
+    strong {{parliament.office.name}}
+  img.img-responsive(src="/upload/tcarlsen/your-government/img/silhuet.png" ng-src="{{parliament.candidate.image}}" alt="{{parliament.candidate.name}}" ng-click="popup($index, parliament.office.id)")
+  p {{parliament.candidate.name | lineBreak}}
+  a.remove(ng-show="parliament.candidate.name == null" ng-click="removeCandidate($index)")
+    i.fa.fa-minus-square
+    | &nbsp;slet ministerium
+save.parliaments.active.col-md-2.col-sm-3.col-xs-6(ng-show="stage == 'home'")
+  .office-name
+    strong &nbsp;
+  img.img-responsive(src="/upload/tcarlsen/your-government/img/save.png" alt="" ng-click="save()")
+.clearfix
+share.share(ng-show="showShare")
+  h4 Del dit ministerhold
+  .input-group
+    input.form-control(type="text" placeholder="Giv evt. din regering et navn" ng-model="parliamentName")
+    span.input-group-btn
+      button.btn.btn-orange(ng-click="setParliamentName(parliamentName)" ng-hide="nameSet") OK
+    span.input-group-btn
+      button.btn.btn-gray(ng-show="nameSet" disabled="disabled")
+        i.fa.fa-check
+  .social
+    a.btn-share-facebook(href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;")
+      i.fa.fa-facebook
+    a.btn-share-twitter(href="#" onclick="window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(window.location.href) + '&amp;text=Se%20min%20helt%20egen%20dr%C3%B8mmeregering', 'twitter-share-dialog', 'width=526,height=245'); return false;")
+      i.fa.fa-twitter
+    a.btn-share-linkedin(href="#" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url='+encodeURIComponent(window.location.href)+'&amp;title='+encodeURIComponent(document.title), 'linkedin-share-dialog', 'width=626,height=445'); return false;")
+      i.fa.fa-linkedin
+    a.btn-share-send(href="mailto:?Subject=Se%20min%20helt%20egen%20dr%C3%B8mmeregering%3F%20%7C%20www.politiko.dk&Body=http%3A%2F%2Fwww.politiko.dk%2Fminregering%2F%23%23{{shareId}}")
+      i.fa.fa-envelope
+  input.form-control(type="text" value="http://www.politiko.dk/minregering/##{{shareId}}")
+popup.popup(ng-show="showPopup")
+  h4 Hvem skal være {{activeParliament.name | lowercase}}
+  p Skriv dit bud på en {{activeParliament.name | lowercase}}
+  .autocomplete-form
+    .input-group
+      input.form-control(placeholder="NAVN" ng-model="search.name")
+      span.input-group-btn
+        button.btn(ng-click="selectCadidate({name: search.name})") OK
+      ul(ng-show="search.name")
+        li(ng-repeat="candidate in candidates | filter:search:strict | limitTo:5" ng-click="selectCadidate(candidate)") {{candidate.name}}
+  p Eller vælg blandt de mest populære
+  candidate.col-lg-3.col-md-4.col-sm-6.col-xs-4(ng-repeat="candidate in candidates | limitTo:8" ng-click="selectCadidate(candidate)")
+    img.img-responsive(src="/upload/tcarlsen/your-government/img/silhuet.png" ng-src="{{candidate.image}}")
+    p {{candidate.name | lineBreak}}
