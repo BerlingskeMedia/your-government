@@ -15,6 +15,8 @@ var
   changed = require('gulp-changed'),
   gulpif = require('gulp-if'),
   jade = require('gulp-jade'),
+  connect = require('gulp-connect'),
+  corsproxy = require('corsproxy'),
   livereload = require('gulp-livereload'),
   pkg = require('./package.json');
 
@@ -67,7 +69,7 @@ gulp.task('dom', function () {
 gulp.task('images', function () {
   return gulp.src('src/images/**')
     .pipe(gulpif(!build, changed('app/img')))
-    .pipe(imagemin())
+    // .pipe(imagemin())
     .pipe(gulp.dest(dest + '/img'))
     .pipe(livereload());
 });
@@ -79,11 +81,43 @@ gulp.task('watch', function () {
   gulp.watch('src/images/**', ['images']);
 });
 /* Build task */
-gulp.task('build', function () {
-  build = true;
-  dest = 'build';
+// gulp.task('build', function () {
+//   build = true;
+//   dest = 'build';
+//
+//   gulp.start('scripts', 'styles', 'dom', 'images');
+// });
 
-  gulp.start('scripts', 'styles', 'dom', 'images');
+/* Server */
+gulp.task('connect', function () {
+  connect.server({
+    root: 'app',
+    port: 9000,
+    livereload: true
+  });
 });
+
+/* CORS Proxy */
+gulp.task('corsproxy', function () {
+  require('corsproxy/bin/corsproxy');
+});
+
+gulp.task('build', function () {
+  if (process.argv.indexOf('--production') > -1){
+    build = true;
+    dest = 'build';
+    del(dest);
+    console.log('Building into ./' + dest);
+    gulp.start('scripts', 'styles', 'dom', 'images');
+  } else {
+    build = false;
+    dest = 'app/upload/tcarlsen/your-government';
+    console.log('Building into ./' + dest);
+    gulp.start('scripts', 'styles', 'dom', 'images');
+  }
+});
+
+gulp.task('serve', ['corsproxy', 'connect']);
+
 /* Default task */
 gulp.task('default', ['scripts', 'styles', 'dom', 'images', 'watch']);
