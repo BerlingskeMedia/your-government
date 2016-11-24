@@ -5,11 +5,13 @@
   "author": "tcarlsen",
   "devDependencies": {
     "corsproxy": "^1.5.0",
+    "del": "^2.2.2",
     "gulp": "^3.8.10",
     "gulp-changed": "^1.0.0",
     "gulp-cleanhtml": "^1.0.1",
     "gulp-coffee": "^2.2.0",
     "gulp-concat": "^2.4.2",
+    "gulp-connect": "^5.0.0",
     "gulp-csso": "^2.0.0",
     "gulp-header": "^1.2.2",
     "gulp-if": "^1.2.5",
@@ -20,7 +22,6 @@
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^2.3.2",
     "gulp-styl": "^1.0.2",
-    "gulp-uglify": "^2.0.0",
-    "gulp-connect": "^5.0.0"
+    "gulp-uglify": "^2.0.0"
   }
 }

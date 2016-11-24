@@ -10,9 +10,9 @@ candidate.parliaments.col-lg-2.col-sm-3.col-xs-6(ng-repeat="parliament in parlia
     strong {{parliament.office.name}}
   img.img-responsive(src="/upload/tcarlsen/your-government/img/silhuet.png" ng-src="{{parliament.candidate.image}}" alt="{{parliament.candidate.name}}" ng-click="popup($index, parliament.office.id)")
   p {{parliament.candidate.name | lineBreak}}
-  a.remove(ng-show="parliament.candidate.name == null" ng-click="removeCandidate($index)")
-    i.fa.fa-minus-square
-    | &nbsp;slet ministerium
+    a.remove(ng-show="parliament.candidate.name == null" ng-click="removeCandidate($index)")
+      i.fa.fa-minus-square
+      | &nbsp;Slet
 save.parliaments.active.col-md-2.col-sm-3.col-xs-6(ng-show="stage == 'home'")
   .office-name
     strong &nbsp;

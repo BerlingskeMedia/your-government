@@ -17,6 +17,7 @@ var
   jade = require('gulp-jade'),
   connect = require('gulp-connect'),
   corsproxy = require('corsproxy'),
+  del = require('del'),
   livereload = require('gulp-livereload'),
   pkg = require('./package.json');
 
