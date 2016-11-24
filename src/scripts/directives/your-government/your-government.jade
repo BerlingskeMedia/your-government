@@ -34,9 +34,9 @@ share.share(ng-show="showShare")
       i.fa.fa-twitter
     a.btn-share-linkedin(href="#" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url='+encodeURIComponent(window.location.href)+'&amp;title='+encodeURIComponent(document.title), 'linkedin-share-dialog', 'width=626,height=445'); return false;")
       i.fa.fa-linkedin
-    a.btn-share-send(href="mailto:?Subject=Se%20min%20helt%20egen%20dr%C3%B8mmeregering%3F%20%7C%20www.politiko.dk&Body=http%3A%2F%2Fwww.politiko.dk%2Fminregering%2F%23%23{{shareId}}")
+    a.btn-share-send(href="mailto:?Subject=Se%20min%20helt%20egen%20dr%C3%B8mmeregering%3F%20%7C%20b.dk/politiko.dk&Body=http%3A%2F%2Fb.dk/politiko.dk%2Fminregering%2F%23%23{{shareId}}")
       i.fa.fa-envelope
-  input.form-control(type="text" value="http://www.politiko.dk/minregering/##{{shareId}}")
+  input.form-control(type="text" value="http://www.b.dk/politiko/minregering/#\#{{shareId}}")
 popup.popup(ng-show="showPopup")
   h4 Hvem skal være {{activeParliament.name | lowercase}}
   p Skriv dit bud på en {{activeParliament.name | lowercase}}

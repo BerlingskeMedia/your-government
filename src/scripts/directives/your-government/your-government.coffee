@@ -12,7 +12,8 @@ angular.module "yourGovernmentDirective", []
       scope.search = {}
       scope.nameSet = false;
 
-      api = "http://54.77.4.249";
+      # api = "http://54.77.4.249";
+      api = "http://yougov.bemit.dk";
       popupEle = element.find "popup"
       appWidth = element[0].offsetWidth
       parliamentsUrl = "#{api}/offices"
@@ -68,7 +69,7 @@ angular.module "yourGovernmentDirective", []
               scope.parliaments = response.data
 
         scope.title = "Hvem skal styre Danmark?"
-        scope.description = "Sæt dit helt eget ministerhold. Du kan udpege hvemsomhelst, og du kan slette de ministerier, du ikke vil have. Tryk på en ministerpost for at komme i gang."
+        scope.description = "Sæt dit helt eget ministerhold. Du kan udpege hvem som helst, og du kan slette de ministerier, du ikke vil have. Tryk på en ministerpost for at komme i gang."
         scope.class = ""
         scope.stage = "home"
 
@@ -126,7 +127,7 @@ angular.module "yourGovernmentDirective", []
 
       if $location.hash()
         parliamentsUrl = "#{api}/parliaments/#{$location.hash()}"
-        scope.description = "Du kan også sætte dit eget ministerhold. Tryk på 'Sæt din egen regering', udpeg hvemsomhelst og slet de ministerier, du ikke vil have."
+        scope.description = "Du kan også sætte dit eget ministerhold. Tryk på 'Sæt din egen regering', udpeg hvem som helst og slet de ministerier, du ikke vil have."
         scope.class = "active"
         scope.stage = "friendlist"
         scope.friend = true
