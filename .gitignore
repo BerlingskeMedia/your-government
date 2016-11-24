@@ -1,4 +1,4 @@
 node_modules
 build
 app/upload/tcarlsen
-app/upload/bower_components
+app/bower_components
