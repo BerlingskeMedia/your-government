@@ -69,7 +69,13 @@ angular.module "yourGovernmentDirective", []
               scope.parliaments = response.data
 
         scope.title = "Hvem skal styre Danmark?"
-        scope.description = "Sæt dit helt eget ministerhold. Du kan udpege hvem som helst, og du kan slette de ministerier, du ikke vil have. Tryk på en ministerpost for at komme i gang."
+        # scope.description = "Sæt dit helt eget ministerhold. Du kan udpege hvem som helst, og du kan slette de ministerier, du ikke vil have. Tryk på en ministerpost for at komme i gang."
+        scope.description = "".concat(
+          "Lige nu sidder Lars Løkke Rasmussen, Anders Samuelsen og Søren Pape Poulsen og forhandler om en ny regering mellem Venstre, Liberal Alliance og de Konservative. ",
+          "Men hvem synes du skal styre Danmark? Berlingske giver dig muligheden for at sætte dit helt eget ministerhold. ",
+          "Vi har taget udgangspunkt i Lars Løkke Rasmussens nuværende ministerhold. Nogle ministerier har vi splittet op, og vi har også oprettet nogle ekstra ministerposter. ",
+          "Du kan selv vælge, om du vil gøre brug af dem eller slette dem. Husk, at du kan sætte samme person på flere ministerposter. ",
+          "Du kan udpege hvem som helst. Du kan vælge at forsøge at sætte det ministerhold, du tror forhandlingerne på Marienborg ender i. Men du kan også gå en anden vej og lave lige den regering, du mener bør lede landet. Du vælger selv, om din regering skal være blå eller rød.");
         scope.class = ""
         scope.stage = "home"
 
